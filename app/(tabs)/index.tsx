@@ -1,10 +1,10 @@
 import { View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useState, useRef } from 'react';
-import { type ImageSource } from 'expo-image';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as MediaLibrary from 'expo-media-library';
 import { captureRef } from 'react-native-view-shot';
+import { type ImageSource } from "expo-image";
 
 import Button from '@/components/Button';
 import ImageViewer from '@/components/ImageViewer';
@@ -17,17 +17,18 @@ import EmojiSticker from '@/components/EmojiSticker';
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
 export default function Index() {
-  const [status, requestPermission] = MediaLibrary.usePermissions();
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(undefined);  
+  const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(undefined);
+  const [status, requestPermission] = MediaLibrary.usePermissions();
+  const imageRef = useRef<View>(null);
 
   if (status === null) {
     requestPermission();
   }
 
-  const PickImageAsync = async () => {
+  const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: true,
@@ -40,9 +41,7 @@ export default function Index() {
     } else {
       alert('You did not select any image.');
     }
-  }
-
-  const imageRef = useRef<View>(null);
+  };
 
   const onReset = () => {
     setShowAppOptions(false);
@@ -54,12 +53,12 @@ export default function Index() {
 
   const onModalClose = () => {
     setIsModalVisible(false);
-  }
+  };
 
   const onSaveImageAsync = async () => {
     try {
       const localUri = await captureRef(imageRef, {
-        width: 440,
+        height: 440,
         quality: 1,
       });
 
@@ -69,6 +68,7 @@ export default function Index() {
       }
     } catch (e) {
       console.log(e);
+      alert(e);
     }
   };
 
@@ -80,22 +80,20 @@ export default function Index() {
           {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
         </View>
       </View>
-
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
           <View style={styles.optionsRow}>
-            <IconButton icon='refresh' label='Reset' onPress={onReset} />
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
             <CircleButton onPress={onAddSticker} />
-            <IconButton icon='save-alt' label='Save' onPress={onSaveImageAsync} />
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
           </View>
         </View>
       ) : (
         <View style={styles.footerContainer}>
-          <Button label='Choose a photo' theme='primary' onPress={PickImageAsync} />
-          <Button label='Use this photo' onPress={() => setShowAppOptions(true)} />
+          <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
+          <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
         </View>
       )}
-
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
@@ -107,10 +105,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#25292e',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   imageContainer: {
-    flex: 1
+    flex: 1,
   },
   footerContainer: {
     flex: 1 / 3,
