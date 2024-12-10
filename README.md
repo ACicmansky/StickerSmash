@@ -1,8 +1,23 @@
-# Welcome to your Expo app 👋
+# StickerSmash 🎨
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A fun and interactive mobile app built with Expo that lets you create custom stickers by adding emojis and decorations to your photos. Perfect for creating personalized sticker content for your messaging needs!
 
-## Get started
+## Features ✨
+
+- Import photos from your device's gallery
+- Add and customize emoji stickers
+- Adjust sticker placement and size
+- Save your created stickers
+- Cross-platform support (iOS & Android)
+
+## Technology Stack 🛠️
+
+- [Expo](https://expo.dev) - React Native framework
+- React Native for cross-platform mobile development
+- Expo Image Manipulator for photo editing
+- Expo Media Library for saving creations
+
+## Get Started 🚀
 
 1. Install dependencies
 
@@ -16,35 +31,35 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+### Running the App 📱
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+In the output, you'll find options to open the app in a:
+
+- [Development build](https://docs.expo.dev/develop/development-builds/introduction/)
 - [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [Expo Go](https://expo.dev/go)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure 📁
 
-## Get a fresh project
+- `app/` - Main application code using file-based routing
+- `assets/` - Images and other static assets
+- `components/` - Reusable React components
 
-When you're ready, run:
+## Learn More 📚
 
-```bash
-npm run reset-project
-```
+- [Expo documentation](https://docs.expo.dev/)
+- [React Native documentation](https://reactnative.dev/)
+- [Expo Image Manipulator docs](https://docs.expo.dev/versions/latest/sdk/imagemanipulator/)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Contributing 🤝
 
-## Learn more
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To learn more about developing your project with Expo, look at the following resources:
+## License 📄
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This project is licensed under the MIT License.
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Created with ❤️ using Expo
